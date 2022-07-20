@@ -6,7 +6,7 @@ const session = require('express-session')
 const {v4: uuidv4} = require('uuid')
 const router = require('./routes')
 const mongoose = require('mongoose')
-const User = require('./models/User')
+// const User = require('./models/User')
 
 mongoose.connect('mongodb://localhost:27017/ixnote', {useNewUrlParser: true}).then(
     () => {
@@ -19,13 +19,13 @@ mongoose.connect('mongodb://localhost:27017/ixnote', {useNewUrlParser: true}).th
         app.use(bodyparser.json())
         app.use(bodyparser.urlencoded({extended:true}))
 
-        app.use(session({
-            secret: uuidv4,
-            resave: false,
-            saveUninitialized: true
-        }))
+        // app.use(session({
+        //     secret: uuidv4,
+        //     resave: false,
+        //     saveUninitialized: true
+        // }))
 
-        app.use('/route', router)
+        app.use('/api', router)
 
         // Login Route
         app.get('/', (req, res) => {
