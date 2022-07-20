@@ -4,7 +4,7 @@ const port = process.env.PORT || 3000
 const bodyparser = require('body-parser')
 const session = require('express-session')
 const {v4: uuidv4} = require('uuid')
-const router = require('./router')
+const router = require('./routes')
 const mongoose = require('mongoose')
 const User = require('./models/User')
 
