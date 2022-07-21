@@ -19,11 +19,11 @@ mongoose.connect('mongodb://localhost:27017/ixnote', {useNewUrlParser: true}).th
         app.use(bodyparser.json())
         app.use(bodyparser.urlencoded({extended:true}))
 
-        // app.use(session({
-        //     secret: uuidv4,
-        //     resave: false,
-        //     saveUninitialized: true
-        // }))
+        app.use(session({
+            secret: uuidv4,
+            resave: false,
+            saveUninitialized: true
+        }))
 
         app.use('/api', router)
 
@@ -45,8 +45,6 @@ mongoose.connect('mongodb://localhost:27017/ixnote', {useNewUrlParser: true}).th
                 res.render('dashboard', {users: users});
             });
         });
-
-          
 
         // Login Route
         app.get('/', (req, res) => {
