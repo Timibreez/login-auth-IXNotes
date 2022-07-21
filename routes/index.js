@@ -22,7 +22,7 @@ router.post('/login', (req, res) => {
             return res.status(404).send()
         }
 
-        return res.status(200).send()
+        return res.status(200).redirect('/dashboard')
     })
 })
 
@@ -34,19 +34,23 @@ router.get('/test', (req, res) => {
 router.post('/register', (req, res) => {
     const email = req.body.email
     const password = req.body.password
+    const firstname = req.body.firstname
+    const lastname = req.body.lastname
 
     const newUser = new User()
 
     newUser.email = email
     newUser.password = password
+    newUser.firstname = firstname
+    newUser.lastname = lastname
 
     newUser.save((err, savedUser) => {
         if(err){
             console.log(err)
-            return res.status(500).send()
+            return res.status(500).send(err)
         }
 
-        return res.status(200).send()
+        return res.status(200).redirect('/')
     })
 })
 

@@ -6,7 +6,7 @@ const session = require('express-session')
 const {v4: uuidv4} = require('uuid')
 const router = require('./routes')
 const mongoose = require('mongoose')
-// const User = require('./models/User')
+const User = require('./models/User')
 
 mongoose.connect('mongodb://localhost:27017/ixnote', {useNewUrlParser: true}).then(
     () => {
@@ -27,9 +27,34 @@ mongoose.connect('mongodb://localhost:27017/ixnote', {useNewUrlParser: true}).th
 
         app.use('/api', router)
 
+        // app.get('/dashboard', (req, res) => {
+        //     User.find({}, (err, users) => {
+
+        //         const userMap = {};
+          
+        //         users.forEach((user) => {
+        //             userMap[user._id] = user;
+        //         });
+          
+        //         res.render('/dashboard', {userMap});  
+        //     });
+        // });
+
+        app.get('/dashboard', (req, res) => {
+            User.find({}, (err, users) => {
+                res.render('dashboard', {users: users});
+            });
+        });
+
+          
+
         // Login Route
         app.get('/', (req, res) => {
             res.render('index', {title: 'IXNote Enterprise | Login'})
+        })
+
+        app.get('/register', (req, res) => {
+            res.render('register', {title: 'IXNote Enterprise | Register'})
         })
 
         app.listen(port, () => {
