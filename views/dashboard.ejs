@@ -4,19 +4,23 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{%=locals.title ? title:'Dashboard | IXNote Enterprise'  %}</title>
+    <title><%=locals.title ? title:"Dashboard | IXNote Enterprise"  %></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
     <link rel="stylesheet" type="text/css" href="/css/main.css">
     <link rel="icon" href="" type="image/icon type">
 </head>
 <body>
-    <div class="lesson-wrapper">
-        <div class="lessons">
-            <div class="lesson">
-                <h4 style="align-items: center; margin-bottom: 20">Number of Users In IXNote Database</h4>
-                <h5 style="text-align:center; margin-top:50px"><%= users.length %></h5>
-                
-            </div>
+    <div class="">
+        <div class="dashboard">
+
+            <h1>Number Of Users Currently Registered</h1>
+            <h1>You Inclusive</h1>
+            <h5><%= users.length %></h5>
+    
         </div>
     </div>
+
+    <!-- <script src="js/main.js"></script> -->
 </body>
 </html>

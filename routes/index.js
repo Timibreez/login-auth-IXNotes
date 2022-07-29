@@ -19,9 +19,8 @@ router.post('/login', (req, res) => {
         }
 
         if(!user) {
-            return res.status(404).send()
+            return res.status(404).redirect('/')
         }
-
         return res.status(200).redirect('/dashboard')
     })
 })
