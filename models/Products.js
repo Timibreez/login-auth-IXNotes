@@ -7,5 +7,4 @@ const productSchema = new mongoose.Schema({
     expiringDate: {type: Date, default: Date.now, expires: new Date(req.body.sleepTime)}
 })
 
-const Product = mongoose.model('product', productSchema)
-module.exports = Product
+module.exports = mongoose.model('Products', productSchema)

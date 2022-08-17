@@ -1,6 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/User')
+const Products
 
 // const credentials = {
 //     email: 'ffftimi@gmail.com',
