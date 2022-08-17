@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/User')
-const Products
+const Products = require('../models/Products')
 
 // const credentials = {
 //     email: 'ffftimi@gmail.com',
@@ -26,10 +26,6 @@ router.post('/login', (req, res) => {
     })
 })
 
-router.get('/test', (req, res) => {
-    return res.status(200).send('test confirmed')
-})
-
 // Register User
 router.post('/register', (req, res) => {
     const email = req.body.email
@@ -51,6 +47,28 @@ router.post('/register', (req, res) => {
         }
 
         return res.status(200).redirect('/')
+    })
+})
+
+router.post('/createProduct', (req, res) => {
+    const item = req.body.item
+    const price = req.body.price
+    const quantity = req.body.quantity
+    const expiringDate = req.body.expiringDate
+
+    const newProduct = new Products()
+
+    newProduct.item = item
+    newProduct.price = price
+    newProduct.quantity = quantity
+    newProduct.expiringDate = expiringDate
+
+    newProduct.save((err, savedProduct) => {
+        if (err) {
+            console.log(err)
+            return res.status(500).send(err)
+        }
+        return res.status(200).redirect('/dashboard')
     })
 })
 
