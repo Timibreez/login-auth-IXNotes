@@ -54,7 +54,7 @@ router.post('/createProduct', (req, res) => {
     const item = req.body.item
     const price = req.body.price
     const quantity = req.body.quantity
-    const expiringDate = req.body.expiringDate
+    const expiringDate = req.body.date
 
     const newProduct = new Products()
 
